@@ -8,14 +8,16 @@ export default function Item({ item }) {
     currency: 'USD',
   };
 
+  const isIncome = category === 'income';
+
   return (
     <li className="list__item">
       <div>
         <h4>{name}</h4>
         <small>{getDate()}</small>
       </div>
-      <div>
-        {category === 'income' ? '+' : '-'}
+      <div className={isIncome ? 'success' : 'danger'}>
+        {isIncome ? '+' : '-'}
         {formatCurrency(amount, formatCurrencyOptions)}
       </div>
     </li>

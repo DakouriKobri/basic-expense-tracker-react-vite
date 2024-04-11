@@ -18,6 +18,15 @@
   margin-bottom: 2rem;
 }
 
+.success {
+  /* color: #90ee90; */
+  color: #21d375;
+}
+
+.danger {
+  /* color: #FF0000; */
+  color: #f44336;
+}
 .balance {
   font-size: 4rem;
   font-weight: bold;
