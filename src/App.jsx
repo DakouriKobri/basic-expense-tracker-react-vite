@@ -3,7 +3,9 @@ import { useState } from 'react';
 
 // Project Imports
 import './App.css';
+import Footer from './components/Footer';
 import Form from './components/Form';
+import Header from './components/Header';
 import ItemsList from './components/ItemsList';
 
 function App() {
@@ -21,9 +23,7 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">
-        <h1>My Money</h1>
-      </header>
+      <Header />
 
       <main className="main">
         <div className="balance">
@@ -35,10 +35,7 @@ function App() {
         <ItemsList items={items} />
       </main>
 
-      <footer className="footer">
-        This website was built for educational purpose only &#124; &copy; 2024
-        Dakouri Kobri
-      </footer>
+      <Footer />
     </div>
   );
 }
