@@ -26,12 +26,18 @@ function App() {
   function handleSubmit(event) {
     event.preventDefault();
 
-    const item = { name, amount, category };
+    const item = { name, amount: +amount, category };
     setItems((currentItems) => [...currentItems, item]);
     setName('');
     setAmount('');
     setCategory('income');
   }
+
+  const balance = items.reduce(
+    (sum, item) =>
+      item.category === 'expense' ? sum - item.amount : sum + item.amount,
+    0
+  );
 
   const itemsList = items.map((item) => {
     const { name, amount, category } = item;
@@ -57,7 +63,10 @@ function App() {
       </header>
 
       <main className="main">
-        <div className="balance">-5150</div>
+        <div className="balance">
+          {balance > 0 && '+'}
+          {balance}
+        </div>
 
         <form className="form" onSubmit={handleSubmit}>
           <input
