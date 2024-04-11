@@ -3,14 +3,13 @@ import { useState } from 'react';
 
 // Project Imports
 import './App.css';
+import { getDate } from './utils';
 
 function App() {
   const [name, setName] = useState('');
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState('income');
   const [items, setItems] = useState([]);
-
-  console.log('items:', items);
 
   function handleNameChange(event) {
     setName(event.target.value);
@@ -34,6 +33,23 @@ function App() {
     setCategory('income');
   }
 
+  const itemsList = items.map((item) => {
+    const { name, amount, category } = item;
+    const itemKey = `${new Date().getMilliseconds()}-${Math.random()}`;
+
+    return (
+      <li key={itemKey} className="list__item">
+        <div>
+          <h4>{name}</h4>
+          <small>{getDate()}</small>
+        </div>
+        <div>
+          {category === 'income' ? '+' : '-'}${amount}
+        </div>
+      </li>
+    );
+  });
+
   return (
     <div className="container">
       <header className="header">
@@ -46,7 +62,7 @@ function App() {
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="text"
-            placeholder="Income or expense..."
+            placeholder="Item name..."
             value={name}
             onChange={handleNameChange}
           />
@@ -64,31 +80,7 @@ function App() {
           <button type="submit">&#43;</button>
         </form>
 
-        <ul className="list">
-          <li className="list__item">
-            <div>
-              <h4>Salary</h4>
-              <small>Thu, Apr 11, 2024</small>
-            </div>
-            <div>+$5000.00</div>
-          </li>
-
-          <li className="list__item">
-            <div>
-              <h4>Dinner</h4>
-              <small>Thu, Apr 11, 2024</small>
-            </div>
-            <div>-$150.00</div>
-          </li>
-
-          <li className="list__item">
-            <div>
-              <h4>Car</h4>
-              <small>Thu, Apr 11, 2024</small>
-            </div>
-            <div>-$10000.00</div>
-          </li>
-        </ul>
+        {itemsList && <ul className="list">{itemsList}</ul>}
       </main>
 
       <footer className="footer">
