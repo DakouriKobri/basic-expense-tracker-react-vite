@@ -1,6 +1,39 @@
+// NPM Packages
+import { useState } from 'react';
+
+// Project Imports
 import './App.css';
 
 function App() {
+  const [name, setName] = useState('');
+  const [amount, setAmount] = useState('');
+  const [category, setCategory] = useState('income');
+  const [items, setItems] = useState([]);
+
+  console.log('items:', items);
+
+  function handleNameChange(event) {
+    setName(event.target.value);
+  }
+
+  function handleAmountChange(event) {
+    setAmount(event.target.value);
+  }
+
+  function handleCategoryChange(event) {
+    setCategory(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const item = { name, amount, category };
+    setItems((currentItems) => [...currentItems, item]);
+    setName('');
+    setAmount('');
+    setCategory('income');
+  }
+
   return (
     <div className="container">
       <header className="header">
@@ -10,14 +43,25 @@ function App() {
       <main className="main">
         <div className="balance">-5150</div>
 
-        <form className="form">
-          <input type="text" placeholder="Income or expense..." />
-          <input type="number" placeholder="Amount..." />
-          <select>
+        <form className="form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Income or expense..."
+            value={name}
+            onChange={handleNameChange}
+          />
+          <input
+            type="number"
+            placeholder="Amount..."
+            value={amount}
+            onChange={handleAmountChange}
+          />
+          <select value={category} onChange={handleCategoryChange}>
             <option value="income">Income</option>
             <option value="expense">Expense</option>
           </select>
-          <button>&#43;</button>
+
+          <button type="submit">&#43;</button>
         </form>
 
         <ul className="list">
