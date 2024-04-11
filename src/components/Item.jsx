@@ -1,8 +1,12 @@
 // Project Imports
-import { getDate } from '../utils';
+import { formatCurrency, getDate } from '../utils';
 
 export default function Item({ item }) {
   const { name, amount, category } = item;
+  const formatCurrencyOptions = {
+    style: 'currency',
+    currency: 'USD',
+  };
 
   return (
     <li className="list__item">
@@ -11,7 +15,8 @@ export default function Item({ item }) {
         <small>{getDate()}</small>
       </div>
       <div>
-        {category === 'income' ? '+' : '-'}${amount}
+        {category === 'income' ? '+' : '-'}
+        {formatCurrency(amount, formatCurrencyOptions)}
       </div>
     </li>
   );

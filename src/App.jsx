@@ -3,11 +3,11 @@ import { useState } from 'react';
 
 // Project Imports
 import './App.css';
+import Balance from './components/Balance';
 import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
 import ItemsList from './components/ItemsList';
-import Balance from './components/Balance';
 
 function App() {
   const [items, setItems] = useState([]);
