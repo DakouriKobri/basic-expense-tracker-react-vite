@@ -13,7 +13,7 @@ export default function Item({ item }) {
   return (
     <li className="list__item">
       <div>
-        <h4>{name}</h4>
+        <h4 className="list__item-name">{name}</h4>
         <small>{getDate()}</small>
       </div>
       <div className={isIncome ? 'success' : 'danger'}>

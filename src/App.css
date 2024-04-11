@@ -48,6 +48,10 @@
   justify-content: space-between;
 }
 
+.list__item-name {
+  text-transform: capitalize;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
