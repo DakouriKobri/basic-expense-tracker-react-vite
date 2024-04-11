@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 // Project Imports
 import './App.css';
-import { getDate } from './utils';
 import Form from './components/Form';
+import ItemsList from './components/ItemsList';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -19,23 +19,6 @@ function App() {
     0
   );
 
-  const itemsList = items.map((item) => {
-    const { name, amount, category } = item;
-    const itemKey = `${new Date().getMilliseconds()}-${Math.random()}`;
-
-    return (
-      <li key={itemKey} className="list__item">
-        <div>
-          <h4>{name}</h4>
-          <small>{getDate()}</small>
-        </div>
-        <div>
-          {category === 'income' ? '+' : '-'}${amount}
-        </div>
-      </li>
-    );
-  });
-
   return (
     <div className="container">
       <header className="header">
@@ -49,8 +32,7 @@ function App() {
         </div>
 
         <Form onAdd={handleAddItem} />
-
-        {itemsList && <ul className="list">{itemsList}</ul>}
+        <ItemsList items={items} />
       </main>
 
       <footer className="footer">
