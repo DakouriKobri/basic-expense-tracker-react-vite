@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
 import ItemsList from './components/ItemsList';
+import Balance from './components/Balance';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -26,11 +27,7 @@ function App() {
       <Header />
 
       <main className="main">
-        <div className="balance">
-          {balance > 0 && '+'}
-          {balance}
-        </div>
-
+        <Balance balance={balance} />
         <Form onAdd={handleAddItem} />
         <ItemsList items={items} />
       </main>
