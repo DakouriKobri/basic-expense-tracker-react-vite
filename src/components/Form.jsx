@@ -29,24 +29,34 @@ export default function Form({ onAdd }) {
   }
   return (
     <form className="form" onSubmit={handleSubmit}>
-      <input
-        type="text"
-        placeholder="Item name..."
-        value={name}
-        onChange={handleNameChange}
-      />
-      <input
-        type="number"
-        placeholder="Amount..."
-        value={amount}
-        onChange={handleAmountChange}
-      />
-      <select value={category} onChange={handleCategoryChange}>
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
+      <div className="form__control-container">
+        <input
+          className="form__input"
+          type="text"
+          placeholder="Item name..."
+          value={name}
+          onChange={handleNameChange}
+        />
+        <input
+          className="form__input"
+          type="number"
+          placeholder="Amount..."
+          value={amount}
+          onChange={handleAmountChange}
+        />
+        <select
+          className="form__select"
+          value={category}
+          onChange={handleCategoryChange}
+        >
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+        </select>
+      </div>
 
-      <button type="submit">&#43;</button>
+      <button className="btn" type="submit">
+        &#43;
+      </button>
     </form>
   );
 }

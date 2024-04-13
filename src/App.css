@@ -5,6 +5,8 @@
 }
 
 .container {
+  width: 100%;
+  margin: 0 auto;
   position: relative;
   min-height: 100vh;
 }
@@ -34,7 +36,38 @@
 }
 
 .form {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.form__control-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.form__input {
+  padding: 0.25rem 0;
+  border: none;
+  border-bottom: 1px solid #c5c6d0;
+}
+
+.form__input:active,
+.form__input:focus {
+  outline: none;
+}
+
+.form__select {
+  margin-top: 0.6rem;
+  padding: 0.25rem;
+  background-color: transparent;
+  border: 1px solid #9897a9;
+  border-radius: 0.25rem;
+}
+
+.btn {
+  margin-top: 0.4rem;
+  padding: 0.125rem 1rem 0.25rem 1rem;
 }
 
 .list {
