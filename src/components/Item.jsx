@@ -14,9 +14,9 @@ export default function Item({ item }) {
     <li className="list__item">
       <div>
         <h4 className="list__item-name">{name}</h4>
-        <small>{getDate()}</small>
+        <small className="list__item-date">{getDate()}</small>
       </div>
-      <div className={isIncome ? 'success' : 'danger'}>
+      <div className={`list__item-amount ${isIncome ? 'success' : 'danger'}`}>
         {isIncome ? '+' : '-'}
         {formatCurrency(amount, formatCurrencyOptions)}
       </div>
