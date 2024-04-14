@@ -1,6 +1,9 @@
 // NPM Packages
 import { useState } from 'react';
 
+// Project Imports
+import { getDate } from '../utils';
+
 export default function Form({ onAdd }) {
   const [isInputInvalid, setIsInputInvalid] = useState(false);
 
@@ -31,6 +34,7 @@ export default function Form({ onAdd }) {
       name,
       amount: +amount,
       category,
+      dateAdded: getDate(),
     };
     onAdd(item);
     setInput({
