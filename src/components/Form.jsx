@@ -2,6 +2,8 @@
 import { useState } from 'react';
 
 export default function Form({ onAdd }) {
+  const [isInputInvalid, setIsInputInvalid] = useState(false);
+
   const [input, setInput] = useState({
     name: '',
     amount: '',
@@ -15,10 +17,20 @@ export default function Form({ onAdd }) {
   function handleSubmit(event) {
     event.preventDefault();
 
+    const name = input.name;
+    const amount = input.amount;
+    const category = input.category;
+
+    const invalidInput = !name || !amount;
+    if (invalidInput) {
+      setIsInputInvalid(invalidInput);
+      return;
+    }
+
     const item = {
-      name: input.name,
-      amount: +input.amount,
-      category: input.category,
+      name,
+      amount: +amount,
+      category,
     };
     onAdd(item);
     setInput({
@@ -26,12 +38,16 @@ export default function Form({ onAdd }) {
       amount: '',
       category: 'income',
     });
+    setIsInputInvalid(false);
   }
+
   return (
     <form className="form" onSubmit={handleSubmit}>
       <div className="form__control-container">
         <input
-          className="form__input"
+          className={`form__input ${
+            isInputInvalid && input.name === '' && 'border-danger'
+          }`}
           type="text"
           placeholder="Item name..."
           name="name"
@@ -39,7 +55,9 @@ export default function Form({ onAdd }) {
           onChange={handleInputUpdate}
         />
         <input
-          className="form__input"
+          className={`form__input ${
+            isInputInvalid && input.amount === '' && 'border-danger'
+          }`}
           type="number"
           placeholder="Amount..."
           name="amount"
