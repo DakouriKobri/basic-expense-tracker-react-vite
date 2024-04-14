@@ -2,30 +2,30 @@
 import { useState } from 'react';
 
 export default function Form({ onAdd }) {
-  const [name, setName] = useState('');
-  const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('income');
+  const [input, setInput] = useState({
+    name: '',
+    amount: '',
+    category: 'income',
+  });
 
-  function handleNameChange(event) {
-    setName(event.target.value);
-  }
-
-  function handleAmountChange(event) {
-    setAmount(event.target.value);
-  }
-
-  function handleCategoryChange(event) {
-    setCategory(event.target.value);
+  function handleInputUpdate(event) {
+    setInput({ ...input, [event.target.name]: event.target.value });
   }
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    const item = { name, amount: +amount, category };
+    const item = {
+      name: input.name,
+      amount: +input.amount,
+      category: input.category,
+    };
     onAdd(item);
-    setName('');
-    setAmount('');
-    setCategory('income');
+    setInput({
+      name: '',
+      amount: '',
+      category: 'income',
+    });
   }
   return (
     <form className="form" onSubmit={handleSubmit}>
@@ -34,20 +34,23 @@ export default function Form({ onAdd }) {
           className="form__input"
           type="text"
           placeholder="Item name..."
-          value={name}
-          onChange={handleNameChange}
+          name="name"
+          value={input.name}
+          onChange={handleInputUpdate}
         />
         <input
           className="form__input"
           type="number"
           placeholder="Amount..."
-          value={amount}
-          onChange={handleAmountChange}
+          name="amount"
+          value={input.amount}
+          onChange={handleInputUpdate}
         />
         <select
           className="form__select"
-          value={category}
-          onChange={handleCategoryChange}
+          name="category"
+          value={input.category}
+          onChange={handleInputUpdate}
         >
           <option value="income">Income</option>
           <option value="expense">Expense</option>
