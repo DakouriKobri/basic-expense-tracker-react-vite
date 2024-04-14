@@ -19,15 +19,11 @@ export default function Form({ onAdd }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-
-    const name = input.name;
-    const amount = input.amount;
-    const category = input.category;
+    const { amount, category, name } = input;
 
     const invalidInput = !name || !amount;
     if (invalidInput) {
-      setIsInputInvalid(invalidInput);
-      return;
+      return setIsInputInvalid(invalidInput);
     }
 
     const item = {
