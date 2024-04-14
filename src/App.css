@@ -12,13 +12,20 @@
   min-height: 100vh;
 }
 
+.image__container {
+  position: absolute;
+  width: 38%;
+  right: 0;
+  z-index: -10;
+}
+
 .main {
   padding-bottom: 2rem;
 }
 
 .header {
   margin-top: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .success {
@@ -108,6 +115,10 @@
 }
 
 @media (min-width: 600px) {
+  .header h1 {
+    font-size: 2.6rem;
+  }
+
   .balance {
     font-size: 4rem;
   }

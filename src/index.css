@@ -11,6 +11,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+img {
+  width: 100%;
+}
+
 /*
   Inpired by Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/

@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import Form from './components/Form';
 import Header from './components/Header';
 import ItemsList from './components/ItemsList';
+import MoneyImage from './components/MoneyImage';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <div className="container">
+      <MoneyImage />
       <Header />
 
       <main className="main">
