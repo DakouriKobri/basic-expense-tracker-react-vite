@@ -1,12 +1,12 @@
 // NPM Packages
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 // Project Imports
 import { getDate } from '../utils';
 
 export default function Form({ onAdd }) {
   const [isInputInvalid, setIsInputInvalid] = useState(false);
-
   const [input, setInput] = useState({
     name: '',
     amount: '',
@@ -27,6 +27,7 @@ export default function Form({ onAdd }) {
     }
 
     const item = {
+      id: uuidv4(),
       name,
       amount: +amount,
       category,
