@@ -61,9 +61,11 @@
   border-bottom: 1px solid #c5c6d0;
 }
 
+.form__input:hover,
 .form__input:active,
 .form__input:focus {
   outline: none;
+  border-bottom: 1px solid #21d375;
 }
 
 .form__select {
@@ -74,11 +76,24 @@
   border-radius: 0.25rem;
 }
 
+.form__select:hover,
+.form__select:focus,
+-form__select:active {
+  border: 1px solid #21d375;
+}
+
 .btn {
   margin-top: 0.4rem;
   padding: 0.125rem 1rem 0.25rem 1rem;
   border-radius: 0.25rem;
   border: 1px solid #9897a9;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #21d375;
+  border-color: #21d375;
 }
 
 .list {
